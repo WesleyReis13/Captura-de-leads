@@ -5,7 +5,7 @@ import ContainerForm from '../components/ContainerForm'
 
 export default function Home(){
     return(
-    <div className="min-h-screen flex justify-center items-center gap-6 bg-gray-100">
+    <div className="min-h-screen flex justify-between items-center gap-6 ">
       <Container/>
       <ContainerForm/>
     </div>

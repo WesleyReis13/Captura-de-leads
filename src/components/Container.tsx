@@ -4,13 +4,13 @@ import ProfileCard from "./ProfileCard";
 
 const Container: React.FC = () => {
   return (
-    <div className="w-auto bg-[#F3EDE2] rounded-xl shadow-md p-6 flex flex-col gap-4">
-      <h1 className="text-xl font-bold">Descubra em minutos</h1>
-      <p>Se o nosso produto é para você</p>
+    <div className="w-auto bg-[#F3EDE2] p-6 flex flex-col gap-4">
+      <h1 className="text-xl font-bold text-[#49543A] ">Descubra em minutos</h1>
+      <p className="text-[#49543A] ">Se o nosso produto é para você</p>
       <ul className="list-disc pl-6">
-        <li>Primeiro item</li>
-        <li>Segundo item</li>
-        <li>Terceiro item</li>
+        <li className="text-[#49543A]">Primeiro item</li>
+        <li className="text-[#49543A]">Segundo item</li>
+        <li className="text-[#49543A]">Terceiro item</li>
       </ul>
       <ProfileCard
         photo="https://via.placeholder.com/150"
