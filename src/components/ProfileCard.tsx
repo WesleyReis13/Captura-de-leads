@@ -10,7 +10,7 @@ interface ProfileCardProps {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ photo, name, role, social1, social2 }) => {
   return (
-    <div className="flex items-center justify-between w-full max-w-xl p-4  rounded-lg shadow-md bg-white">
+    <div className="flex items-center justify-between w-full max-w-xl p-4  rounded-lg shadow-md bg-[#F3EDE2]">
       
       <div className="flex items-center gap-4">
         <img

@@ -15,10 +15,10 @@ const Step3: React.FC<StepProps> = ({ formData, handleChange, prevStep }) => {
         Aceito os termos e condições
       </label>
       <div className="flex w-full justify-between">
-        <Button title="Voltar" color="bg-gray-500" onClick={prevStep} />
+        <Button title="Voltar" color="bg-[#49543A]" onClick={prevStep} />
         <Button
           title="Enviar"
-          color="bg-green-700"
+          color="bg-[#49543A]"
           onClick={() => alert("Formulário finalizado!")}
         />
       </div>

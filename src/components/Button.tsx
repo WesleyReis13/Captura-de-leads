@@ -8,11 +8,11 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ title, color = "bg-green-700", textColor = "text-white", onClick }) => {
+const Button: React.FC<ButtonProps> = ({ title, color = "bg-[#49543A]", textColor = "text-white", onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`w-full px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${color} ${textColor}`}
+      className={`w-full px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${textColor} ${color}`}
     >
       {title}
     </button>

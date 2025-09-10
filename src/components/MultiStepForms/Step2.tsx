@@ -1,35 +1,51 @@
 import React from "react";
-import Input from "../Input";
 import Button from "../Button";
 import type { StepProps } from "./types";
 
 const Step2: React.FC<StepProps> = ({ formData, handleChange, nextStep, prevStep }) => {
   return (
     <div className="w-[400px] bg-[#F3EDE2] rounded-xl shadow-md p-6 flex flex-col items-center gap-5">
-      <Input
-        type="number"
-        placeholder="Idade"
-        name="idade"
-        value={formData.idade}
-        onChange={handleChange}
-      />
-      <Input
-        type="text"
-        placeholder="Cidade"
-        name="cidade"
-        value={formData.cidade}
-        onChange={handleChange}
-      />
-      <Input
-        type="text"
-        placeholder="Profissão"
-        name="profissao"
-        value={formData.profissao}
-        onChange={handleChange}
-      />
-      <div className="flex w-full justify-between">
-        <Button title="Voltar" color="bg-gray-500" onClick={prevStep} />
-        <Button title="Próximo" color="bg-green-700" onClick={nextStep} />
+      
+      
+      <h2 className="text-md font-bold text-[#49543A] text-left w-full">Qual seu principal objetivo?</h2>
+      <div className="flex flex-col w-full gap-2">
+        {["Emagrecer", "Ganhar massa muscular", "Melhorar desempenho esportivo", "Melhorar hábitos e qualidade de vida"].map((option) => (
+          <label key={option} className="flex items-center gap-2 text-[#49543A]">
+            <input
+              type="radio"
+              name="objetivo"
+              value={option}
+              checked={formData.objetivo === option}
+              onChange={handleChange}
+              className="accent-[#49543A]"
+            />
+            {option}
+          </label>
+        ))}
+      </div>
+
+      
+      <h2 className="text-md font-bold text-[#49543A] text-left w-full mt-4">Como está sua rotina de exercícios atualmente?</h2>
+      <div className="flex flex-col w-full gap-2">
+        {["Não pratico exercícios", "Pratico ocasionalmente (1-2x na semana)", "Pratico regularmente (3x+ na semana)"].map((option) => (
+          <label key={option} className="flex items-center gap-2 text-[#49543A]">
+            <input
+              type="radio"
+              name="rotinaExercicio"
+              value={option}
+              checked={formData.rotinaExercicio === option}
+              onChange={handleChange}
+              className="accent-[#49543A]"
+            />
+            {option}
+          </label>
+        ))}
+      </div>
+
+      
+      <div className="flex w-full justify-between mt-6">
+        <Button title="Voltar" color="bg-[#49543A]" textColor="text-white" onClick={prevStep} />
+        <Button title="Próximo" color="bg-[#49543A]" textColor="text-white" onClick={nextStep} />
       </div>
     </div>
   );
