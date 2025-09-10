@@ -10,7 +10,7 @@ interface ProfileCardProps {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ photo, name, role, social1, social2 }) => {
   return (
-    <div className="flex items-center justify-between w-full max-w-xl p-4  rounded-lg shadow-md bg-[#F3EDE2]">
+    <div className="flex items-center justify-between w-full max-w-xl p-4  rounded-lg shadow-md bg-white">
       
       <div className="flex items-center gap-4">
         <img
@@ -30,7 +30,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ photo, name, role, social1, s
           href={social1}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 rounded-md text-center bg-[#49543A] transition"
+          className="px-4 py-2 rounded-md text-center bg-[#49543A] text-white !text-white transition"
         >
           Instagram
         </a>
@@ -38,7 +38,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ photo, name, role, social1, s
           href={social2}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2  rounded-md text-center bg-[#49543A] transition"
+          className="px-4 py-2 rounded-md text-center bg-[#49543A] text-white !text-white transition"
         >
           Linkedin
         </a>
