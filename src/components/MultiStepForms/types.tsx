@@ -1,10 +1,10 @@
+// types.ts - CORRIJA A INTERFACE
 export interface FormData {
   nome: string;
   email: string;
   whatsapp: string;
-  idade: string;
-  cidade: string;
-  profissao: string;
+  objective: string;    
+  routine: string; 
   aceitaTermos: boolean;
 }
 
