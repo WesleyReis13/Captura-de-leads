@@ -13,9 +13,9 @@ const Step2: React.FC<StepProps> = ({ formData, handleChange, nextStep, prevStep
           <label key={option} className="flex items-center gap-2 text-[#49543A]">
             <input
               type="radio"
-              name="objetivo"
+              name="objective"
               value={option}
-              checked={formData.objetivo === option}
+              checked={formData.objective === option}
               onChange={handleChange}
               className="accent-[#49543A]"
             />
@@ -31,9 +31,9 @@ const Step2: React.FC<StepProps> = ({ formData, handleChange, nextStep, prevStep
           <label key={option} className="flex items-center gap-2 text-[#49543A]">
             <input
               type="radio"
-              name="rotinaExercicio"
+              name="routine"
               value={option}
-              checked={formData.rotinaExercicio === option}
+              checked={formData.routine === option}
               onChange={handleChange}
               className="accent-[#49543A]"
             />
