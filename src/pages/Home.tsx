@@ -2,7 +2,7 @@ import React from "react";
 import Container from '../components/Container'
 import ContainerForm from '../components/ContainerForm'
 import MultiStepForm from "../components/MultiStepForms/Index";
-import SignUp from "./login/SignUp";
+import SignUp from "./login/login";
 import LeadsTable from "./dashboard/painel/LeadsTable";
 import AdminPanel from "./dashboard/painel/admin/AdminPanel";
 
@@ -16,6 +16,7 @@ export default function Home(){
       <Container/>
       <MultiStepForm/>
     </div>
+    
     
     
     )
