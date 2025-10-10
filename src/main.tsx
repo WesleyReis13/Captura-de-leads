@@ -8,6 +8,7 @@ import AdminPanel from './pages/dashboard/painel/admin/AdminPanel.tsx'
 import {ProtectedRoute} from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext.tsx'
 import CheckoutPage from './pages/checkout.tsx'
+import SuccessPage from './pages/SuccessPage.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<App />} />   
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/success" element={<SuccessPage />} />
         <Route
           path="/admin"
           element={
