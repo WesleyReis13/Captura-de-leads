@@ -34,20 +34,21 @@ export default function LeadsTable() {
   const [filter, setFilter] = useState<"all" | "leads" | "clients">("all");
 
   useEffect(() => {
-    const fetchLeads = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/api/leads");
-        const data = await res.json();
-        setLeads(data);
-      } catch (error) {
-        console.error("Erro ao carregar leads:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchLeads = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/leads");
+      const data = await res.json();
+      console.log("📊 Dados recebidos da API:", data);
+      setLeads(data);
+    } catch (error) {
+      console.error("Erro ao carregar leads:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchLeads();
-  }, []);
+  fetchLeads();
+}, []);
 
   const filteredLeads = leads.filter(lead => {
     if (filter === "leads") return !lead.isClient;
