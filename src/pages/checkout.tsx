@@ -11,6 +11,11 @@ export default function CheckoutPage() {
   const [selectedPlan, setSelectedPlan] = useState<string>('ESSENTIAL');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const leadId = urlParams.get('leadId');
+  const customerEmail = urlParams.get('email');
+
   const plans: Plan[] = [
     {
       id: 'ESSENTIAL',
@@ -32,35 +37,60 @@ export default function CheckoutPage() {
     }
   ];
 
-  const handleSubscribe = async (): Promise<void> => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          planType: selectedPlan,
-          customerEmail: 'cliente@email.com',
-          leadId: 123
-        })
-      });
+  
+  if (!leadId || !customerEmail) {
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+          <h2 className="text-red-600 text-xl font-bold mb-2">Link inválido ou expirado</h2>
+          <p className="text-gray-600">Por favor, use o link enviado por WhatsApp para acessar esta página.</p>
+        </div>
+      </div>
+    );
+  }
 
-      if (!response.ok) {
-        throw new Error('Erro ao criar sessão de checkout');
-      }
+ const handleSubscribe = async (): Promise<void> => {
+  setIsLoading(true);
+  try {
+    console.log('📦 Enviando para API:', {
+      planType: selectedPlan,
+      customerEmail: customerEmail,
+      leadId: parseInt(leadId)
+    });
 
-      const data = await response.json();
-      
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('URL não retornada pela API');
-      }
-    } catch (error) {
-      console.error('Erro:', error);
-      setIsLoading(false);
+    
+    const response = await fetch('http://localhost:3000/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        planType: selectedPlan,
+        customerEmail: customerEmail,
+        leadId: parseInt(leadId)
+      })
+    });
+
+    console.log('📡 Status da resposta:', response.status);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ Erro da API:', errorText);
+      throw new Error(`Erro ao criar sessão: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    console.log('✅ Resposta da API:', data);
+    
+    if (data.url) {
+      console.log('🔗 Redirecionando para:', data.url);
+      window.location.href = data.url;
+    } else {
+      throw new Error('URL não retornada pela API');
+    }
+  } catch (error) {
+    console.error('💥 Erro completo:', error);
+    setIsLoading(false);
+  }
+};
 
   const handlePlanSelect = (planId: string): void => {
     setSelectedPlan(planId);
@@ -69,6 +99,13 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Escolha seu Plano</h1>
+      
+      
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-center">
+        <p className="text-blue-700 text-sm">
+          Cadastro: <strong>{customerEmail}</strong>
+        </p>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
