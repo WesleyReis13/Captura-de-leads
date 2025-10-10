@@ -49,21 +49,25 @@ export default function CheckoutPage() {
     );
   }
 
- const handleSubscribe = async (): Promise<void> => {
+ const handleSubscribe = async (planId?: string): Promise<void> => {
+  
+  const planToUse = planId || selectedPlan;
+  
+  console.log('🚀 handleSubscribe - Plano a ser enviado:', planToUse);
+  
   setIsLoading(true);
   try {
     console.log('📦 Enviando para API:', {
-      planType: selectedPlan,
+      planType: planToUse,
       customerEmail: customerEmail,
       leadId: parseInt(leadId)
     });
 
-    
     const response = await fetch('http://localhost:3000/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        planType: selectedPlan,
+        planType: planToUse,
         customerEmail: customerEmail,
         leadId: parseInt(leadId)
       })
@@ -82,6 +86,7 @@ export default function CheckoutPage() {
     
     if (data.url) {
       console.log('🔗 Redirecionando para:', data.url);
+      console.log('🎯 PLANO FINAL ENVIADO1:', planToUse);
       window.location.href = data.url;
     } else {
       throw new Error('URL não retornada pela API');
@@ -91,9 +96,10 @@ export default function CheckoutPage() {
     setIsLoading(false);
   }
 };
-
   const handlePlanSelect = (planId: string): void => {
+    console.log('🔄 handlePlanSelect chamado com:', planId)
     setSelectedPlan(planId);
+    console.log('📝 selectedPlan após set:', planId);
   };
 
   return (
@@ -116,7 +122,11 @@ export default function CheckoutPage() {
                 ? 'border-blue-500 bg-blue-50 shadow-lg'
                 : 'border-gray-300 hover:shadow-md'
             }`}
-            onClick={() => handlePlanSelect(plan.id)}
+            onClick={() => {
+                handlePlanSelect(plan.id);
+                handleSubscribe(plan.id);
+              }}
+
           >
             <h2 className="text-xl font-semibold mb-2">{plan.name}</h2>
             <p className="text-2xl font-bold text-blue-600 mb-4">{plan.price}</p>
@@ -134,7 +144,7 @@ export default function CheckoutPage() {
                   ? 'bg-blue-600 text-white hover:bg-blue-700'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
-              onClick={handleSubscribe}
+              
               disabled={isLoading}
             >
               {isLoading ? 'Carregando...' : 'Selecionar Plano'}
