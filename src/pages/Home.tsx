@@ -10,12 +10,14 @@ import AdminPanel from "./dashboard/painel/admin/AdminPanel";
 
 
 
+
 export default function Home(){
     return(
     <div className="min-h-screen flex justify-between items-center gap-6 ">
       <Container/>
       <MultiStepForm/>
     </div>
+    
     
     
     
