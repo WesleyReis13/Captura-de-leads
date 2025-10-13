@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+# 🚀 Captura de Leads - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web para o sistema de captação e gerenciamento de leads, integrando formulário de triagem, painel administrativo e pagamentos via Stripe.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Sobre o Projeto
 
-## Expanding the ESLint configuration
+Este frontend faz parte de um sistema completo de **captura de leads e acompanhamento de conversões**.  
+Foi desenvolvido com **React + TypeScript + Vite**, utilizando **TailwindCSS** para estilização e **Axios** para integração com a API.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✨ Funcionalidades Principais
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Formulário de Triagem:**  
+  Permite a captação de informações iniciais dos leads diretamente no site do cliente, facilitando a entrada de novos contatos.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Painel Administrativo:**  
+  Área exclusiva para o cliente visualizar todos os leads cadastrados, acompanhar se viraram clientes e verificar o tipo de plano contratado.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Envio Automatizado de Mensagens via Planilha:**  
+  No painel admin, é possível **enviar uma planilha contendo mensagens, horários e datas**.  
+  O sistema processa essa planilha e agenda o **envio automático das mensagens aos clientes** conforme as informações especificadas no arquivo.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Integração com Stripe:**  
+  Implementação do sistema de assinatura, permitindo planos **mensais, semanais e diários**.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Design Moderno e Intuitivo:**  
+  Interface focada na experiência do usuário.  
+  *(Responsividade ainda em desenvolvimento.)*
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🧠 Tecnologias Utilizadas
+
+- **React** (com Vite)
+- **TypeScript**
+- **TailwindCSS**
+- **Axios**
+- **React Router DOM**
+- **Stripe.js**
+
+---
+
+## 🧩 Repositórios Relacionados
+
+Este projeto faz parte de um ecossistema com três repositórios principais:
+
+| Módulo | Descrição | Repositório |
+|--------|------------|-------------|
+| 🖥️ Frontend | Interface web (formulário + painel admin) | [Captura-de-leads (atual)](https://github.com/WesleyReis13/Captura-de-leads) |
+| ⚙️ Backend | API principal (Node.js + Express + PostgreSQL) | [captura-leads-backend](https://github.com/WesleyReis13/Captura-de-leads-backend) |
+| 🤖 Bot | Envio de mensagens via WhatsApp (Baileys) | [captura-leads-bot](https://github.com/WesleyReis13/Mensagem-Leads) |
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+**Wesley Reis**  
+Frontend Developer • [LinkedIn](https://www.linkedin.com/in/wesleysnipeslopes/)
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.  
+Sinta-se à vontade para estudar, modificar e utilizar como base em seus próprios projetos.
+
+---
