@@ -13,9 +13,9 @@ const Container: React.FC = () => {
         <li className="text-[#49543A]">Aumente sua confiança e mude seus hábitos com suporte especializado.</li>
       </ul>
       <ProfileCard
-        photo="https://picsum.photos/300/200"
+        photo="/assets/personalTrainer.jpg"
         name="John Doe"
-        role="CEO"
+        role="PERSONAL TRAINER"
         social1="https://linkedin.com"
         social2="https://twitter.com"
       />

@@ -1,4 +1,5 @@
 import React from "react";
+import personalTrainerImg from '../assets/personalTrainer.jpg';
 
 interface ProfileCardProps {
   photo: string;
@@ -14,7 +15,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ photo, name, role, social1, s
       
       <div className="flex items-center gap-4">
         <img
-          src={photo}
+          src={personalTrainerImg}
           alt={name}
           className="w-16 h-16 rounded-full border object-cover"
         />
